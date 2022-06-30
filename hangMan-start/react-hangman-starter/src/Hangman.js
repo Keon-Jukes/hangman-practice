@@ -77,7 +77,13 @@ class Hangman extends Component {
         <h1>Hangman</h1>
         <img src={this.props.images[this.state.nWrong]} alt={altText} />
         <p>Number Wrong: {this.state.nWrong}</p>
-        
+        {/* {new Set(this.state.answer).size === this.state.guessed.size ? (
+        <div>
+          You Win! The correct word is: {this.state.answer}
+          </div>)
+        : (<div>
+  
+        </div>)} */}
         {this.state.nWrong >= this.props.maxWrong ? (<div>You Lose. The correct word is: {this.state.answer}</div>)
         : (<div>
         <p className='Hangman-word'>{this.guessedWord()}</p>
