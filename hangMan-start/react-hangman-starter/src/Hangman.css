@@ -58,9 +58,6 @@
   box-shadow: 0 6px #9e9e9e;
 }
 
-.Hangman-reset-btn{
-  text-align: center;
-  display: inline-block;
-  width: 250px;
- 
- }
+#restart {
+  width: auto;
+}
