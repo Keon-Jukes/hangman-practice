@@ -72,25 +72,20 @@ class Hangman extends Component {
   /** render: render game */
   render() {
     const altText = `${this.state.nWrong} / ${this.props.maxWrong} guesses`;
+    const isLoser = this.state.nWrong >= this.props.maxWrong;
+    const isWinner = this.guessedWord().join("") === this.state.answer;
+    let gameState = this.generateButtons();
+    if(isWinner) gameState = 'You Win!';
+    if(isLoser) gameState = 'You Lose!';
     return (
       <div className='Hangman'>
         <h1>Hangman</h1>
         <img src={this.props.images[this.state.nWrong]} alt={altText} />
-        <p>Number Wrong: {this.state.nWrong}</p>
-        {/* {new Set(this.state.answer).size === this.state.guessed.size ? (
-        <div>
-          You Win! The correct word is: {this.state.answer}
-          </div>)
-        : (<div>
-  
-        </div>)} */}
-        {this.state.nWrong >= this.props.maxWrong ? (<div>You Lose. The correct word is: {this.state.answer}</div>)
-        : (<div>
+        <p>Guessed Wrong: {this.state.nWrong}</p>
         <p className='Hangman-word'>{this.guessedWord()}</p>
-        <p className='Hangman-btns'>{this.generateButtons()}
-        </p>
-        </div>)}
+        {/* <p className='Hangman-btns'>{this.generateButtons()}</p> */}
         <div>
+          <p className='Hangman-btns'>{gameState}</p>
           <button id='restart' onClick={this.handleRestart}>Restart</button>
         </div>
         
